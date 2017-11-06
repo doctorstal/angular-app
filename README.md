@@ -26,7 +26,7 @@ I'll try to give this project hour or two per day to fully upgrade it's client s
 4. [Bootstraping hybrid application](https://angular.io/guide/upgrade#bootstrapping-hybrid-applications)
     - here you'll need to learn some tricks to make everything work together
 5. Upgrade and temprorary downgrade everything
-    this is best part. You pulling it up and down, trying not to brak things and not to set everything on fire, when AoT is enabled. It's fun. Just trust me.
+    - this is best part. You pulling it up and down, trying not to brak things and not to set everything on fire, when AoT is enabled. It's fun. Just trust me.
 6. Upgrade your dependencies
     - worst part of upgrade process is that on some stage you are required to use ng2 versions of everything.
 7. Remove hybrid app bootstrap.
