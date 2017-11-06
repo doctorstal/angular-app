@@ -16,18 +16,18 @@ I'll try to give this project hour or two per day to fully upgrade it's client s
 ## Steps
 
 1. Module loader
-    [guide](https://angular.io/guide/upgrade#using-a-module-loader) will be polite and let you choose from SystemJS, Webpack or Browserify, but hey, Angular and angular-cli is fully on [Webpack](http://webpack.github.io/), so other options is just for an illusion of choise.
+    - [guide](https://angular.io/guide/upgrade#using-a-module-loader) will be polite and let you choose from SystemJS, Webpack or Browserify, but hey, Angular and angular-cli is fully on [Webpack](http://webpack.github.io/), so other options is just for an illusion of choise.
 2. [TypeScript](https://angular.io/guide/upgrade#migrating-to-typescript)
     - rename *.js to *.ts;
     - add imports;
     - TS classes should replace every function that possible to replace with function. It realy siplifies further steps;
 3. [Component directives](https://angular.io/guide/upgrade#using-component-directives)
-    thit step could be skipped until needed. Only directives could be upgraded, but you can do each only when you want to.
+    - thit step could be skipped until needed. Only directives could be upgraded, but you can do each only when you want to.
 4. [Bootstraping hybrid application](https://angular.io/guide/upgrade#bootstrapping-hybrid-applications)
-    here you'll need to learn some tricks to make everything work together
+    - here you'll need to learn some tricks to make everything work together
 5. Upgrade and temprorary downgrade everything
     this is best part. You pulling it up and down, trying not to brak things and not to set everything on fire, when AoT is enabled. It's fun. Just trust me.
 6. Upgrade your dependencies
-    worst part of upgrade process is that on some stage you are required to use ng2 versions of everything.
+    - worst part of upgrade process is that on some stage you are required to use ng2 versions of everything.
 7. Remove hybrid app bootstrap.
 8. Celebrate!
