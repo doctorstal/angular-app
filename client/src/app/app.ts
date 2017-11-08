@@ -1,9 +1,10 @@
-angular.module('app', [
+import { adminModule } from './admin/admin';
+export const appModule = angular.module('app', [
   'ngRoute',
   'projectsinfo',
   'dashboard',
   'projects',
-  'admin',
+  adminModule.name,
   'services.breadcrumbs',
   'services.i18nNotifications',
   'services.httpRequestTracker',
@@ -12,13 +13,13 @@ angular.module('app', [
   'templates.app',
   'templates.common']);
 
-angular.module('app').constant('MONGOLAB_CONFIG', {
+appModule.constant('MONGOLAB_CONFIG', {
   baseUrl: '/databases/',
-  dbName: 'ascrum'
+  dbName: 'angular-app'
 });
 
 //TODO: move those messages to a separate module
-angular.module('app').constant('I18N.MESSAGES', {
+appModule.constant('I18N.MESSAGES', {
   'errors.route.changeError':'Route change error',
   'crud.user.save.success':"A user with id '{{id}}' was saved successfully.",
   'crud.user.remove.success':"A user with id '{{id}}' was removed successfully.",
@@ -33,18 +34,18 @@ angular.module('app').constant('I18N.MESSAGES', {
   'login.error.serverError': "There was a problem with authenticating: {{exception}}."
 });
 
-angular.module('app').config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+appModule.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
   $routeProvider.otherwise({redirectTo:'/projectsinfo'});
 }]);
 
-angular.module('app').run(['security', function(security) {
+appModule.run(['security', function(security) {
   // Get the current user when the application starts
   // (in case they are still logged in from a previous session)
   security.requestCurrentUser();
 }]);
 
-angular.module('app').controller('AppCtrl', ['$scope', 'i18nNotifications', 'localizedMessages', function($scope, i18nNotifications, localizedMessages) {
+appModule.controller('AppCtrl', ['$scope', 'i18nNotifications', 'localizedMessages', function($scope, i18nNotifications, localizedMessages) {
 
   $scope.notifications = i18nNotifications;
 
@@ -57,7 +58,7 @@ angular.module('app').controller('AppCtrl', ['$scope', 'i18nNotifications', 'loc
   });
 }]);
 
-angular.module('app').controller('HeaderCtrl', ['$scope', '$location', '$route', 'security', 'breadcrumbs', 'notifications', 'httpRequestTracker',
+appModule.controller('HeaderCtrl', ['$scope', '$location', '$route', 'security', 'breadcrumbs', 'notifications', 'httpRequestTracker',
   function ($scope, $location, $route, security, breadcrumbs, notifications, httpRequestTracker) {
   $scope.location = $location;
   $scope.breadcrumbs = breadcrumbs;
