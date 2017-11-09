@@ -49,7 +49,7 @@ describe('admin projects', function () {
       locals.$scope.onSave(locals.project);
 
       expect(locals.i18nNotifications.pushForNextRoute).toHaveBeenCalled();
-      expect(locals.i18nNotifications.pushForNextRoute.mostRecentCall.args[1]).toBe('success');
+      expect(locals.i18nNotifications.pushForNextRoute.calls.mostRecent().args[1]).toBe('success');
       expect(locals.$location.path).toHaveBeenCalled();
     });
 
@@ -61,7 +61,7 @@ describe('admin projects', function () {
       locals.$scope.onError();
 
       expect(locals.i18nNotifications.pushForCurrentRoute).toHaveBeenCalled();
-      expect(locals.i18nNotifications.pushForCurrentRoute.mostRecentCall.args[1]).toBe('error');
+      expect(locals.i18nNotifications.pushForCurrentRoute.calls.mostRecent().args[1]).toBe('error');
     });
   });
 

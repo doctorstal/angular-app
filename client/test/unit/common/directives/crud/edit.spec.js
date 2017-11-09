@@ -85,7 +85,7 @@ describe('crud-edit directive', function () {
       element = $compile('<form name="form" crud-edit="resource"><input name="someField" ng-model="resource.someVal"></form>')($rootScope);
       scope = element.scope();
       someField = scope.form.someField;
-      resourceMock.$saveOrUpdate.andCallFake(function(onSave1, onSave2, onError1, onError2) {
+      resourceMock.$saveOrUpdate.and.callFake(function(onSave1, onSave2, onError1, onError2) {
         onSave1();
         onSave2();
         onError1();
@@ -131,7 +131,7 @@ describe('crud-edit directive', function () {
       });
 
       it('should update the "original" object', function() {
-        resourceMock.$saveOrUpdate.andCallFake(function(onSave) {
+        resourceMock.$saveOrUpdate.and.callFake(function(onSave) {
           onSave({ someVal: 'newValue' });
         });
         someField.$setViewValue('newValue');
@@ -184,7 +184,7 @@ describe('crud-edit directive', function () {
 
     describe('remove', function() {
       it('scope.remove should call resource.$remove if resource.$id returns true', function() {
-        resourceMock.$id = jasmine.createSpy('$id').andReturn(true);
+        resourceMock.$id = jasmine.createSpy('$id').and.returnValue(true);
         scope.remove();
         expect(resourceMock.$remove).toHaveBeenCalledWith(jasmine.any(Function), jasmine.any(Function));
       });
@@ -199,8 +199,8 @@ describe('crud-edit directive', function () {
           scope = element.scope();
         });
 
-        resourceMock.$id = jasmine.createSpy('$id').andReturn(true);
-        resourceMock.$remove.andCallFake(function(onSave, onError) {
+        resourceMock.$id = jasmine.createSpy('$id').and.returnValue(true);
+        resourceMock.$remove.and.callFake(function(onSave, onError) {
           onSave();
           onError();
         });
@@ -211,7 +211,7 @@ describe('crud-edit directive', function () {
       });
 
       it('scope.remove should call resource.$remove if resource.$id returns false', function() {
-        resourceMock.$id = jasmine.createSpy('$id').andReturn(false);
+        resourceMock.$id = jasmine.createSpy('$id').and.returnValue(false);
         scope.remove();
         expect(resourceMock.$remove).not.toHaveBeenCalled();
       });

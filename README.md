@@ -17,7 +17,7 @@ I'll try to give this project hour or two per day to fully upgrade it's client s
 
 1. Module loader
     - [guide](https://angular.io/guide/upgrade#using-a-module-loader) will be polite and let you choose from SystemJS, Webpack or Browserify, but hey, Angular and angular-cli is fully on [Webpack](http://webpack.github.io/), so other options is just for an illusion of choise.
-2. [TypeScript](https://angular.io/guide/upgrade#migrating-to-typescript)
+2. [TypeScript](https://angular.io/guide/upgrade#migrating-to-typescript) (**We are here.** And also we are still at step 1, as we'll move every build step to webpack piece by piece)
     - rename *.js to *.ts;
     - add imports;
     - TS classes should replace every function that possible to replace with function. It realy siplifies further steps;
@@ -31,3 +31,10 @@ I'll try to give this project hour or two per day to fully upgrade it's client s
     - worst part of upgrade process is that on some stage you are required to use ng2 versions of everything.
 7. Remove hybrid app bootstrap.
 8. Celebrate!
+
+## Current step(s)
+
+Now I am migrating build to _webpack_. But not rapidly. It allows me to always keep a project alive.
+As all good rules, this one also has an exception. I've rapidly updated _Karma_ to newer version (old was failing on my non-english windows os due to known issue).
+But back to _webpack_ migration. _Webpack_ will not pack `.js` files - only `.ts`. Thus I can easily split _grunt_ and _webpack_ responsibilities.
+Check out how all modules is getting imported into `app.ts` (our entry point). Each angularjs module has a name and we need that name in dependency list. So why don't we import a module and use its `name` property in dependency list instead of _string_? It also makes things more DRY, as you do not need to copy-paste that module names.

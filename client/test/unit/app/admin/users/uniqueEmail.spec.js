@@ -38,14 +38,14 @@ describe('uniqueEmail directive', function() {
     expect(Users.query).toHaveBeenCalled();
   });
   it('should set model to invalid if the Users callback contains users', function() {
-    Users.query.andCallFake(function(query, callback) {
+    Users.query.and.callFake(function(query, callback) {
       callback(['someUser']);
     });
     form.testInput.$setViewValue('different');
     expect(form.testInput.$valid).toBe(false);
   });
   it('should set model to valid if the Users callback contains no users', function() {
-    Users.query.andCallFake(function(query, callback) {
+    Users.query.and.callFake(function(query, callback) {
       callback([]);
     });
     form.testInput.$setViewValue('different');

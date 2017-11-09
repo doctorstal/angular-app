@@ -1730,7 +1730,7 @@ window.jstestdriver && (function(window) {
   });
 
   function isSpecRunning() {
-    return currentSpec && (window.mocha || currentSpec.queue.running);
+    return !!currentSpec;
   }
 
   /**

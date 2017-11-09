@@ -3014,9 +3014,9 @@ function annotate(fn) {
  *      eventTracker.event('login');
  *      eventTracker.save();
  *      expect(postSpy).toHaveBeenCalled();
- *      expect(postSpy.mostRecentCall.args[0]).not.toEqual('/track');
- *      expect(postSpy.mostRecentCall.args[0]).toEqual('/custom-track');
- *      expect(postSpy.mostRecentCall.args[1]).toEqual({ 'login': 1 });
+ *      expect(postSpy.calls.mostRecent().args[0]).not.toEqual('/track');
+ *      expect(postSpy.calls.mostRecent().args[0]).toEqual('/custom-track');
+ *      expect(postSpy.calls.mostRecent().args[1]).toEqual({ 'login': 1 });
  *    }));
  *  });
  * </pre>
