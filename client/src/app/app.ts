@@ -1,15 +1,25 @@
+import { directivesCrudModule } from './../common/directives/crud/crud';
+import { servicesBreadcrumbsModule } from './../common/services/breadcrumbs';
+import { projectsModule } from './projects/projects';
+import { projectsInfoModule } from './projectsinfo/projectsinfo';
+import { dashboardModule } from './dashboard/dashboard';
+import { servicesI18nNotificationsModule } from './../common/services/i18nNotifications';
 import { adminModule } from './admin/admin';
+import { securityModule } from '../common/security/index';
+import { servicesExceptionHandlerModule } from '../common/services/exceptionHandler';
+import { servicesHttpRequestTracker } from '../common/services/httpRequestTracker';
 export const appModule = angular.module('app', [
   'ngRoute',
-  'projectsinfo',
-  'dashboard',
-  'projects',
+  projectsInfoModule.name,
+  dashboardModule.name,
+  projectsModule.name,
   adminModule.name,
-  'services.breadcrumbs',
-  'services.i18nNotifications',
-  'services.httpRequestTracker',
-  'security',
-  'directives.crud',
+  servicesBreadcrumbsModule.name,
+  servicesI18nNotificationsModule.name,
+  servicesExceptionHandlerModule.name, // Somehow it was not in dependencies in original sources
+  servicesHttpRequestTracker.name,
+  securityModule.name,
+  directivesCrudModule.name,
   'templates.app',
   'templates.common']);
 
