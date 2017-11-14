@@ -1,22 +1,36 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
-  entry: './src/app/app.ts',
+  entry: {
+    bundle: './src/app/app.ts',
+    vendor: './vendor/vendor-imports.ts'
+  },
   devtool: 'inline-source-map',
   module: {
-    rules: [
+    loaders: [
       {
         test: /\.tsx?$/,
         use: 'ts-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.html$/,
+        use: 'html-loader?exportAsEs6Default',
         exclude: /node_modules/
       }
     ]
   },
   resolve: {
-    extensions: [ '.tsx', '.ts', '.js' ]
+    extensions: [ '.tsx', '.ts', '.js', '.html' ],
   },
   output: {
-    filename: 'bundle.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist')
-  }
+  },
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor'
+    })
+  ]
 };

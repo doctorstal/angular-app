@@ -38,7 +38,7 @@ describe('security', function() {
       $httpBackend.expect('POST', '/login');
       service.login('email', 'password');
       $httpBackend.flush();
-      expect(service.currentUser).toBe(userInfo);
+      expect(service.currentUser).toEqual(userInfo);
     });
     it('calls queue.retry on a successful login', function() {
       $httpBackend.when('POST', '/login').respond(200, { user: userInfo });
@@ -48,7 +48,7 @@ describe('security', function() {
       $httpBackend.flush();
       $rootScope.$digest();
       expect(queue.retryAll).toHaveBeenCalled();
-      expect(service.currentUser).toBe(userInfo);
+      expect(service.currentUser).toEqual(userInfo);
     });
     it('does not call queue.retryAll after a login failure', function() {
       $httpBackend.when('POST', '/login').respond(200, { user: null });
@@ -116,14 +116,14 @@ describe('security', function() {
       service.currentUser = userInfo;
       expect(service.isAuthenticated()).toBe(true);
       expect(service.isAdmin()).toBe(false);
-      expect(service.currentUser).toBe(userInfo);
+      expect(service.currentUser).toEqual(userInfo);
     });
     it("should be admin if we update with admin user info", function() {
       var userInfo = { admin: true };
       service.currentUser = userInfo;
       expect(service.isAuthenticated()).toBe(true);
       expect(service.isAdmin()).toBe(true);
-      expect(service.currentUser).toBe(userInfo);
+      expect(service.currentUser).toEqual(userInfo);
     });
 
     it("should not be authenticated or admin if we clear the user", function() {
@@ -131,7 +131,7 @@ describe('security', function() {
       service.currentUser = userInfo;
       expect(service.isAuthenticated()).toBe(true);
       expect(service.isAdmin()).toBe(true);
-      expect(service.currentUser).toBe(userInfo);
+      expect(service.currentUser).toEqual(userInfo);
 
       service.currentUser = null;
       expect(service.isAuthenticated()).toBe(false);
@@ -147,7 +147,7 @@ describe('security', function() {
       service.requestCurrentUser().then(function(data) {
         resolved = true;
         expect(service.isAuthenticated()).toBe(true);
-        expect(service.currentUser).toBe(userInfo);
+        expect(service.currentUser).toEqual(userInfo);
       });
       $httpBackend.flush();
       expect(resolved).toBe(true);
@@ -158,7 +158,7 @@ describe('security', function() {
       expect(service.isAuthenticated()).toBe(true);
       service.requestCurrentUser().then(function(data) {
         resolved = true;
-        expect(service.currentUser).toBe(userInfo);
+        expect(service.currentUser).toEqual(userInfo);
       });
       expect(resolved).toBe(true);
     });

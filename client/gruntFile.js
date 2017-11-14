@@ -92,22 +92,6 @@ module.exports = function (grunt) {
         options: {
           process: true
         }
-      },
-      angular: {
-        src:['vendor/angular/angular.js', 'vendor/angular/angular-route.js'],
-        dest: '<%= distdir %>/angular.js'
-      },
-      mongo: {
-        src:['vendor/mongolab/*.js'],
-        dest: '<%= distdir %>/mongolab.js'
-      },
-      bootstrap: {
-        src:['vendor/angular-ui/bootstrap/*.js'],
-        dest: '<%= distdir %>/bootstrap.js'
-      },
-      jquery: {
-        src:['vendor/jquery/*.js'],
-        dest: '<%= distdir %>/jquery.js'
       }
     },
     uglify: {
@@ -117,22 +101,6 @@ module.exports = function (grunt) {
         },
         src:['<%= src.js %>' ,'<%= src.jsTpl %>'],
         dest:'<%= distdir %>/<%= pkg.name %>.js'
-      },
-      angular: {
-        src:['<%= concat.angular.src %>'],
-        dest: '<%= distdir %>/angular.js'
-      },
-      mongo: {
-        src:['vendor/mongolab/*.js'],
-        dest: '<%= distdir %>/mongolab.js'
-      },
-      bootstrap: {
-        src:['vendor/angular-ui/bootstrap/*.js'],
-        dest: '<%= distdir %>/bootstrap.js'
-      },
-      jquery: {
-        src:['vendor/jquery/*.js'],
-        dest: '<%= distdir %>/jquery.js'
       }
     },
     recess: {

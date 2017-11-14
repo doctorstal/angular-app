@@ -1,5 +1,5 @@
 describe('securityInterceptor', function() {
-  var queue, interceptor, promise, wrappedPromise;
+  var queue, interceptor, responseError, wrappedPromise;
 
   beforeEach(module('security.interceptor'));
 
@@ -7,34 +7,36 @@ describe('securityInterceptor', function() {
     queue = $injector.get('securityRetryQueue');
     interceptor = $injector.get('securityInterceptor');
     wrappedPromise = {};
-    promise = {
-      then: jasmine.createSpy('then').and.returnValue(wrappedPromise)
-    };
+    responseError = {};
   }));
 
-  it('accepts and returns a promise', function() {
-    var newPromise = interceptor(promise);
-    expect(promise.then).toHaveBeenCalled();
-    expect(promise.then.calls.mostRecent().args[0]).toBe(null);
-    expect(newPromise).toBe(wrappedPromise);
+  it('accepts responseError and returns a rejected promise', function() {
+    responseError.status = 400;
+    interceptor.responseError(responseError)
+      .then(function() { fail('Promise should be rejected') }, 
+      function(rejection){
+        expect(rejection).toBe(responseError);
+      });
   });
 
   it('does not intercept non-401 error responses', function() {
     var httpResponse = {
       status: 400
     };
-    interceptor(promise);
-    var errorHandler = promise.then.calls.mostRecent().args[1];
-    expect(errorHandler(httpResponse)).toBe(promise);
+    interceptor.responseError(httpResponse)
+      .then(function() { fail('Promise should be rejected') }, 
+      function(rejection){
+        expect(rejection).toBe(responseError);
+      });
   });
 
   it('intercepts 401 error responses and adds it to the retry queue', function() {
     var notAuthResponse = {
       status: 401
     };
-    interceptor(promise);
-    var errorHandler = promise.then.calls.mostRecent().args[1];
-    var newPromise = errorHandler(notAuthResponse);
+    interceptor.responseError(notAuthResponse)
+    .then()
+    .catch(function (){fail('should not fail')})
     expect(queue.hasMore()).toBe(true);
     expect(queue.retryReason()).toBe('unauthorized-server');
   });

@@ -8,6 +8,9 @@ import { adminModule } from './admin/admin';
 import { securityModule } from '../common/security/index';
 import { servicesExceptionHandlerModule } from '../common/services/exceptionHandler';
 import { servicesHttpRequestTracker } from '../common/services/httpRequestTracker';
+import app_component_html from './app.component.html';
+
+
 export const appModule = angular.module('app', [
   'ngRoute',
   projectsInfoModule.name,
@@ -56,7 +59,7 @@ appModule.run(['security', function(security) {
 }]);
 
 appModule.controller('AppCtrl', ['$scope', 'i18nNotifications', 'localizedMessages', function($scope, i18nNotifications, localizedMessages) {
-
+console.log(app_component_html);
   $scope.notifications = i18nNotifications;
 
   $scope.removeNotification = function (notification) {
@@ -92,3 +95,8 @@ appModule.controller('HeaderCtrl', ['$scope', '$location', '$route', 'security',
     return httpRequestTracker.hasPendingRequests();
   };
 }]);
+
+appModule.component('appRoot', {
+  controller: 'AppCtrl',
+  template: app_component_html
+})

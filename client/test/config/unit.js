@@ -5,21 +5,18 @@ module.exports = function(config) {
         plugins: [
             'karma-junit-reporter',
             'karma-chrome-launcher',
+            'karma-firefox-launcher',
             'karma-jasmine'
         ],
         frameworks: ['jasmine'],
 
         // list of files / patterns to load in the browser
         files: [
-            'vendor/jquery/jquery.js',
-            'vendor/angular/angular.js',
-            'vendor/angular/angular-route.js',
-            'vendor/mongolab/mongolab-resource.js',
-            'test/vendor/angular/angular-mocks.js',
-            'vendor/angular-ui/**/*.js',
+            'dist/vendor.js',
+            'dist/bundle.js',
             'dist/**/*.js',
+            'node_modules/angular-mocks/angular-mocks.js',
             'test/unit/**/*.spec.js',
-            'dist/templates/**/*.js'
         ],
 
         // use dots reporter, as travis terminal does not support escaping sequences
