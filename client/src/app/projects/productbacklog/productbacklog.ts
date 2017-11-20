@@ -1,5 +1,5 @@
-import { servicesCrudModule } from './../../../common/services/crud';
-import { resourcesProductBaclogModule } from './../../../common/resources/backlog';
+import { servicesCrudModule } from './../../common/services/crud';
+import { resourcesProductBaclogModule } from './../../common/resources/backlog';
 
 export const productBacklogModule = angular.module('productbacklog', [
   resourcesProductBaclogModule.name, 

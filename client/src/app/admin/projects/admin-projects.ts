@@ -1,7 +1,7 @@
-import { securityAuthorizationModule } from './../../../common/security/authorization';
-import { servicesCrudModule } from './../../../common/services/crud';
-import { resourcesUsersModule } from './../../../common/resources/users';
-import { resourcesProjectsModule } from './../../../common/resources/projects';
+import { securityAuthorizationModule } from './../../common/security/authorization';
+import { servicesCrudModule } from './../../common/services/crud';
+import { resourcesUsersModule } from './../../common/resources/users';
+import { resourcesProjectsModule } from './../../common/resources/projects';
 
 export const adminProjectsModule = angular.module('admin-projects', [
   resourcesProjectsModule.name,

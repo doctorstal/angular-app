@@ -1,5 +1,5 @@
-import { servicesCrudModule } from './../../../../common/services/crud';
-import { resourcesTasksModule } from './../../../../common/resources/tasks';
+import { servicesCrudModule } from './../../../common/services/crud';
+import { resourcesTasksModule } from './../../../common/resources/tasks';
 export const tasksModule = angular.module('tasks', [
   resourcesTasksModule.name, 
   servicesCrudModule.name

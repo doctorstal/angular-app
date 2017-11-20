@@ -8,7 +8,7 @@
     "url": "git@github.com:angular-app/angular-app.git"
   },
   "scripts": {
-    "build": "webpack&&grunt build-after-webpack",
+    "build": "grunt clean&&webpack&&grunt build-after-webpack",
     "webpack": "webpack --verbose"
   },
   "bugs": {

@@ -44,8 +44,8 @@ module.exports = function (grunt) {
       scenarios: ['test/**/*.scenario.js'],
       html: ['src/index.html'],
       tpl: {
-        app: ['src/app/**/*.tpl.html'],
-        common: ['src/common/**/*.tpl.html']
+        app: ['src/app/!(common)/**/*.tpl.html'],
+        common: ['src/app/common/**/*.tpl.html']
       },
       less: ['src/less/stylesheet.less'], // recess:build doesn't accept ** in its file patterns
       lessWatch: ['src/less/**/*.less']
@@ -71,7 +71,7 @@ module.exports = function (grunt) {
       },
       common: {
         options: {
-          base: 'src/common'
+          base: 'src/app/common'
         },
         src: ['<%= src.tpl.common %>'],
         dest: '<%= distdir %>/templates/common.js',

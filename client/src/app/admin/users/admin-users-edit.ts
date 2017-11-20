@@ -1,6 +1,6 @@
-import { servicesI18nNotificationsModule } from './../../../common/services/i18nNotifications';
+import { servicesI18nNotificationsModule } from './../../common/services/i18nNotifications';
 import { adminUsersEditValidateEqualsModule } from './validateEquals';
-import { servicesCrudModule } from './../../../common/services/crud';
+import { servicesCrudModule } from './../../common/services/crud';
 import { adminUsersEditUniqueEmailModule } from './uniqueEmail';
 export const adminUsersEditModule = angular.module('admin-users-edit',[
   servicesCrudModule.name,

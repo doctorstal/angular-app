@@ -1,8 +1,8 @@
 import { adminUsersEditModule } from './admin-users-edit';
 import { adminUsersListModule } from './admin-users-list';
-import { directivesGravatarModule } from './../../../common/directives/gravatar';
-import { securityAuthorizationModule } from './../../../common/security/authorization';
-import { servicesCrudModule } from './../../../common/services/crud';
+import { directivesGravatarModule } from './../../common/directives/gravatar';
+import { securityAuthorizationModule } from './../../common/security/authorization';
+import { servicesCrudModule } from './../../common/services/crud';
 
 export const adminUsersModule = angular.module('admin-users', [
   adminUsersListModule.name,

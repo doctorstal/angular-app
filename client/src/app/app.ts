@@ -1,14 +1,16 @@
-import { directivesCrudModule } from './../common/directives/crud/crud';
-import { servicesBreadcrumbsModule } from './../common/services/breadcrumbs';
+import { directivesCrudModule } from './common/directives/crud/crud';
+import { servicesBreadcrumbsModule } from './common/services/breadcrumbs';
 import { projectsModule } from './projects/projects';
 import { projectsInfoModule } from './projectsinfo/projectsinfo';
 import { dashboardModule } from './dashboard/dashboard';
-import { servicesI18nNotificationsModule } from './../common/services/i18nNotifications';
+import { servicesI18nNotificationsModule } from './common/services/i18nNotifications';
 import { adminModule } from './admin/admin';
-import { securityModule } from '../common/security/index';
-import { servicesExceptionHandlerModule } from '../common/services/exceptionHandler';
-import { servicesHttpRequestTracker } from '../common/services/httpRequestTracker';
+import { securityModule } from './common/security/index';
+import { servicesExceptionHandlerModule } from './common/services/exceptionHandler';
+import { servicesHttpRequestTracker } from './common/services/httpRequestTracker';
 import app_component_html from './app.component.html';
+import header_component_html from './header.component.html';
+import notifications_component_html from './notifications.component.html';
 
 
 export const appModule = angular.module('app', [
@@ -58,7 +60,10 @@ appModule.run(['security', function(security) {
   security.requestCurrentUser();
 }]);
 
-appModule.controller('AppCtrl', ['$scope', 'i18nNotifications', 'localizedMessages', function($scope, i18nNotifications, localizedMessages) {
+appModule.component('appRoot', {
+  template: app_component_html,
+  controller:
+ ['$scope', 'i18nNotifications', 'localizedMessages', function($scope, i18nNotifications, localizedMessages) {
 console.log(app_component_html);
   $scope.notifications = i18nNotifications;
 
@@ -69,9 +74,12 @@ console.log(app_component_html);
   $scope.$on('$routeChangeError', function(event, current, previous, rejection){
     i18nNotifications.pushForCurrentRoute('errors.route.changeError', 'error', {}, {rejection: rejection});
   });
-}]);
+}]
+});
 
-appModule.controller('HeaderCtrl', ['$scope', '$location', '$route', 'security', 'breadcrumbs', 'notifications', 'httpRequestTracker',
+appModule.component('headerComponent', {
+  template: header_component_html,
+  controller: ['$scope', '$location', '$route', 'security', 'breadcrumbs', 'notifications', 'httpRequestTracker',
   function ($scope, $location, $route, security, breadcrumbs, notifications, httpRequestTracker) {
   $scope.location = $location;
   $scope.breadcrumbs = breadcrumbs;
@@ -94,9 +102,5 @@ appModule.controller('HeaderCtrl', ['$scope', '$location', '$route', 'security',
   $scope.hasPendingRequests = function () {
     return httpRequestTracker.hasPendingRequests();
   };
-}]);
-
-appModule.component('appRoot', {
-  controller: 'AppCtrl',
-  template: app_component_html
-})
+}]
+});

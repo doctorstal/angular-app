@@ -1,3 +1,8 @@
-<div ng-include="'header.tpl.html'"></div>
-<div ng-include="'notifications.tpl.html'" class="container-fluid" ng-show="notifications.getCurrent().length"></div>
+<header-component></header-component>>
+<div class="container-fluid" ng-show="notifications.getCurrent().length">
+    <div ng-class="['alert', 'alert-'+notification.type]" ng-repeat="notification in notifications.getCurrent()">
+        <button class="close" ng-click="removeNotification(notification)">x</button>
+        {{notification.message}}
+    </div>
+</div>
 <div ng-view class="container-fluid"></div>

@@ -1,5 +1,5 @@
 import { sprintsModule } from './sprints/sprints';
-import { securityAuthorizationModule } from './../../common/security/authorization';
+import { securityAuthorizationModule } from './../common/security/authorization';
 import { productBacklogModule } from './productbacklog/productbacklog';
 
 export const projectsModule = angular.module('projects', [

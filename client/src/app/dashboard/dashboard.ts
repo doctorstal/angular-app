@@ -1,5 +1,5 @@
-import { resourcesTasksModule } from './../../common/resources/tasks';
-import { resourcesProjectsModule } from './../../common/resources/projects';
+import { resourcesTasksModule } from './../common/resources/tasks';
+import { resourcesProjectsModule } from './../common/resources/projects';
 export const dashboardModule = angular.module('dashboard', [
   resourcesProjectsModule.name, 
   resourcesTasksModule.name
