@@ -3,7 +3,7 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    bundle: './src/app/app.ts',
+    bundle: './src/ng1-app/app.ts',
     vendor: './vendor/vendor-imports.ts'
   },
   devtool: 'inline-source-map',
