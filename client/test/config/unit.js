@@ -12,9 +12,12 @@ module.exports = function(config) {
 
         // list of files / patterns to load in the browser
         files: [
-            'dist/vendor.js',
-            'dist/bundle.js',
-            'dist/**/*.js',
+            'dist/inline.bundle.js',
+            'dist/polyfills.bundle.js',
+            'dist/vendor.bundle.js',
+            'dist/scripts.bundle.js',
+            'dist/angular-app.js',
+            'dist/main.bundle.js',
             'node_modules/angular-mocks/angular-mocks.js',
             'test/unit/**/*.spec.js',
         ],

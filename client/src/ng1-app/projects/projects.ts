@@ -9,8 +9,7 @@ export const projectsModule = angular.module('projects', [
   securityAuthorizationModule.name])
 
 .config(['$routeProvider', 'securityAuthorizationProvider', function ($routeProvider, securityAuthorizationProvider) {
-  $routeProvider.when('/projects', {
-    templateUrl:'projects/projects-list.tpl.html',
+  let conf: any = {
     controller:'ProjectsViewCtrl',
     resolve:{
       projects:['Projects', function (Projects) {
@@ -19,7 +18,9 @@ export const projectsModule = angular.module('projects', [
       }],
       authenticatedUser: securityAuthorizationProvider.requireAuthenticatedUser
     }
-  });
+  };
+  conf.templateUrl = 'projects/projects-list.tpl.html';
+  $routeProvider.when('/projects', conf);
 }])
 
 .controller('ProjectsViewCtrl', ['$scope', '$location', 'projects', 'security', function ($scope, $location, projects, security) {

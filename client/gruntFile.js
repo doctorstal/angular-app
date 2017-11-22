@@ -2,19 +2,14 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-recess');
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-html2js');
 
   // Default task.
-  grunt.registerTask('default', ['jshint','build','karma:unit']);
-  grunt.registerTask('build', ['clean','html2js','concat','recess:build','copy:assets']);
-  grunt.registerTask('build-after-webpack', ['html2js','concat','recess:build','copy:assets', 'karma:unit']);
-  grunt.registerTask('release', ['clean','html2js','uglify','jshint','karma:unit','concat:index', 'recess:min','copy:assets']);
+  grunt.registerTask('prebuild', ['clean', 'html2js', 'concat', 'recess:build']);
+  grunt.registerTask('postbuild', ['karma:unit']);
   grunt.registerTask('test-watch', ['karma:watch']);
   
   // Print a timestamp (useful for when watching)
@@ -30,7 +25,7 @@ module.exports = function (grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    distdir: 'dist',
+    distdir: 'src_gen',
     pkg: grunt.file.readJSON('package.json'),
     banner:
     '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
@@ -48,14 +43,9 @@ module.exports = function (grunt) {
         common: ['src/ng1-app/common/**/*.tpl.html']
       },
       less: ['src/less/stylesheet.less'], // recess:build doesn't accept ** in its file patterns
-      lessWatch: ['src/less/**/*.less']
+      lessWatch: ['src/less/**/*.less']    
     },
     clean: ['<%= distdir %>/*'],
-    copy: {
-      assets: {
-        files: [{ dest: '<%= distdir %>', src : '**', expand: true, cwd: 'src/assets/' }]
-      }
-    },
     karma: {
       unit: { options: karmaConfig('test/config/unit.js') },
       watch: { options: karmaConfig('test/config/unit.js', { singleRun:false, autoWatch: true}) }
@@ -85,22 +75,6 @@ module.exports = function (grunt) {
         },
         src:['<%= src.js %>', '<%= src.jsTpl %>'],
         dest:'<%= distdir %>/<%= pkg.name %>.js'
-      },
-      index: {
-        src: ['src/index.html'],
-        dest: '<%= distdir %>/index.html',
-        options: {
-          process: true
-        }
-      }
-    },
-    uglify: {
-      dist:{
-        options: {
-          banner: "<%= banner %>"
-        },
-        src:['<%= src.js %>' ,'<%= src.jsTpl %>'],
-        dest:'<%= distdir %>/<%= pkg.name %>.js'
       }
     },
     recess: {
@@ -119,16 +93,6 @@ module.exports = function (grunt) {
         options: {
           compress: true
         }
-      }
-    },
-    watch:{
-      all: {
-        files:['<%= src.js %>', '<%= src.specs %>', '<%= src.lessWatch %>', '<%= src.tpl.app %>', '<%= src.tpl.common %>', '<%= src.html %>'],
-        tasks:['default','timestamp']
-      },
-      build: {
-        files:['<%= src.js %>', '<%= src.specs %>', '<%= src.lessWatch %>', '<%= src.tpl.app %>', '<%= src.tpl.common %>', '<%= src.html %>'],
-        tasks:['build','timestamp']
       }
     },
     jshint:{

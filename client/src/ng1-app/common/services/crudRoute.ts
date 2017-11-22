@@ -44,35 +44,33 @@ function crudRouteProvider($routeProvider): IServiceProvider {
       return resourceName + operation + 'Ctrl';
     };
 
+
+    var getRouteConfig = function(operation, resolveFns) {
+      let conf: any = {};
+      conf.controller = controllerName(operation);
+      conf.templateUrl = templateUrl(operation);
+      conf.resolve = resolveFns;
+      return conf;
+    }
+
+
     // This is the object that our `routesFactory()` function returns.  It decorates `$routeProvider`,
     // delegating the `when()` and `otherwise()` functions but also exposing some new functions for
     // creating CRUD routes.  Specifically we have `whenList(), `whenNew()` and `whenEdit()`.
     var routeBuilder = {
       // Create a route that will handle showing a list of items
       whenList: function (resolveFns) {
-        routeBuilder.when(baseRoute, {
-          templateUrl: templateUrl('List'),
-          controller: controllerName('List'),
-          resolve: resolveFns
-        });
+        routeBuilder.when(baseRoute, getRouteConfig('List', resolveFns));
         return routeBuilder;
       },
       // Create a route that will handle creating a new item
       whenNew: function (resolveFns) {
-        routeBuilder.when(baseRoute + '/new', {
-          templateUrl: templateUrl('Edit'),
-          controller: controllerName('Edit'),
-          resolve: resolveFns
-        });
+        routeBuilder.when(baseRoute + '/new', getRouteConfig('Edit', resolveFns));
         return routeBuilder;
       },
       // Create a route that will handle editing an existing item
       whenEdit: function (resolveFns) {
-        routeBuilder.when(baseRoute + '/:itemId', {
-          templateUrl: templateUrl('Edit'),
-          controller: controllerName('Edit'),
-          resolve: resolveFns
-        });
+        routeBuilder.when(baseRoute + '/:itemId', getRouteConfig('Edit', resolveFns));
         return routeBuilder;
       },
       // Pass-through to `$routeProvider.when()`

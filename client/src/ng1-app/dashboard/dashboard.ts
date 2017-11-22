@@ -6,8 +6,7 @@ export const dashboardModule = angular.module('dashboard', [
 ])
 
 .config(['$routeProvider', function ($routeProvider) {
-  $routeProvider.when('/dashboard', {
-    templateUrl:'dashboard/dashboard.tpl.html',
+  let conf: any = {
     controller:'DashboardCtrl',
     resolve:{
       projects:['Projects', function (Projects) {
@@ -19,7 +18,9 @@ export const dashboardModule = angular.module('dashboard', [
         return Tasks.all();
       }]
     }
-  });
+  };
+  conf.templateUrl = 'dashboard/dashboard.tpl.html';
+  $routeProvider.when('/dashboard', conf);
 }])
 
 .controller('DashboardCtrl', ['$scope', '$location', 'projects', 'tasks', function ($scope, $location, projects, tasks) {
