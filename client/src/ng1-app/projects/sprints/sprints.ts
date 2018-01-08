@@ -3,9 +3,9 @@ import { servicesCrudModule } from './../../common/services/crud';
 import { tasksModule } from "./tasks/tasks";
 
 export const sprintsModule = angular.module('sprints', [
-  resourcesSprintsModule.name, 
-  servicesCrudModule.name, 
-  tasksModule.name
+  resourcesSprintsModule, 
+  servicesCrudModule, 
+  tasksModule
 ])
 
 .config(['crudRouteProvider', function(crudRouteProvider){
@@ -96,4 +96,5 @@ export const sprintsModule = angular.module('sprints', [
   $scope.notSelected = function (productBacklogItem) {
     return $scope.sprint.sprintBacklog.indexOf(productBacklogItem.$id())===-1;
   };
-}]);
+}])
+.name;

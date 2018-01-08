@@ -43,4 +43,5 @@ export const resourcesProjectsModule = angular.module('resources.projects', ['mo
   };
 
   return Projects;
-}]);
+}])
+.name;

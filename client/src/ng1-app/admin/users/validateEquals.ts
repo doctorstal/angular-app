@@ -33,4 +33,5 @@ export const adminUsersEditValidateEqualsModule = angular.module('admin-users-ed
       });
     }
   };
-});
+})
+.name;

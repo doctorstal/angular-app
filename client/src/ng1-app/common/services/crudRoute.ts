@@ -2,7 +2,8 @@ import { IServiceProviderClass, IServiceProvider } from "angular";
 
 export const servicesCrudRouteModule = angular.module('services.crudRoute', [
   'ngRoute'
-]).provider('crudRoute', ['$routeProvider', crudRouteProvider]);
+]).provider('crudRoute', ['$routeProvider', crudRouteProvider])
+.name;
 
 function crudRouteProvider($routeProvider): IServiceProvider {
   // Should not be instantiated

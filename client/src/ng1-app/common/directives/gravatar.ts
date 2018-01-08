@@ -240,4 +240,5 @@ export const directivesGravatarModule = angular.module('directives.gravatar', []
   }
 
   return md5;
-});
+})
+.name;

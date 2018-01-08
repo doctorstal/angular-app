@@ -65,4 +65,5 @@ export const securityRetryQueueModule = angular.module('security.retryQueue', []
     }
   };
   return service;
-}]);
+}])
+.name;

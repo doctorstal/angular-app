@@ -1,10 +1,9 @@
 import { servicesI18nNotificationsModule } from './i18nNotifications';
 export const servicesExceptionHandlerModule = 
   angular.module('services.exceptionHandler', [
-    servicesI18nNotificationsModule.name
-  ]);
-
-servicesExceptionHandlerModule.factory('exceptionHandlerFactory', ['$injector', function($injector) {
+    servicesI18nNotificationsModule
+  ])
+  .factory('exceptionHandlerFactory', ['$injector', function($injector) {
   return function($delegate) {
 
     return function (exception, cause) {
@@ -22,10 +21,10 @@ servicesExceptionHandlerModule.factory('exceptionHandlerFactory', ['$injector', 
       });
     };
   };
-}]);
-
-servicesExceptionHandlerModule.config(['$provide', function($provide) {
+}])
+.config(['$provide', function($provide) {
   $provide.decorator('$exceptionHandler', ['$delegate', 'exceptionHandlerFactory', function ($delegate, exceptionHandlerFactory) {
     return exceptionHandlerFactory($delegate);
   }]);
-}]);
+}])
+.name;

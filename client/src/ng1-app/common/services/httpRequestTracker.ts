@@ -7,4 +7,5 @@ export const servicesHttpRequestTracker = angular.module('services.httpRequestTr
     };
 
     return httpRequestTracker;
-  }]);
+  }])  
+.name;

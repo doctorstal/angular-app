@@ -55,4 +55,5 @@ export const servicesNotificationsModule = angular.module('services.notification
   };
 
   return notificationsService;
-}]);
+}])
+.name;

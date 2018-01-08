@@ -104,4 +104,5 @@ export const directivesCrudEditModule = angular.module('directives.crud.edit', [
       };
     }
   };
-}]);
+}])
+.name;

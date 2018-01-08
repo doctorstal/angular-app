@@ -15,4 +15,5 @@ export const servicesLocalizedMessagesModule = angular.module('services.localize
       }
     }
   };
-}]);
+}])
+.name;

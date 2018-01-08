@@ -11,4 +11,5 @@ export const directivesCrudButtonsModule = angular.module('directives.crud.butto
       '  <button type="button" class="btn btn-danger remove" ng-click="remove()" ng-show="canRemove()">Remove</button>'+
       '</div>'
   };
-});
+})
+.name;

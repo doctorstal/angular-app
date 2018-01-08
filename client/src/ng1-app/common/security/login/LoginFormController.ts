@@ -1,6 +1,6 @@
 import { servicesLocalizedMessagesModule } from './../../services/localizedMessages';
 export const securityLoginFormModule = angular.module('security.login.form', [
-  servicesLocalizedMessagesModule.name
+  servicesLocalizedMessagesModule
 ])
 
 // The LoginFormController provides the behaviour behind a reusable form to allow users to authenticate.
@@ -45,4 +45,5 @@ export const securityLoginFormModule = angular.module('security.login.form', [
   $scope.cancelLogin = function() {
     security.cancelLogin();
   };
-}]);
+}])
+.name;

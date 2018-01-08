@@ -20,4 +20,5 @@ export const securityLoginToolbarModule = angular.module('security.login.toolbar
     }
   };
   return directive;
-}]);
+}])
+.name;

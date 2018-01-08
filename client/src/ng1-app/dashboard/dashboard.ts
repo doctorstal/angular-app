@@ -1,8 +1,8 @@
 import { resourcesTasksModule } from './../common/resources/tasks';
 import { resourcesProjectsModule } from './../common/resources/projects';
 export const dashboardModule = angular.module('dashboard', [
-  resourcesProjectsModule.name, 
-  resourcesTasksModule.name
+  resourcesProjectsModule, 
+  resourcesTasksModule
 ])
 
 .config(['$routeProvider', function ($routeProvider) {
@@ -34,4 +34,5 @@ export const dashboardModule = angular.module('dashboard', [
   $scope.manageSprints = function (projectId) {
     $location.path('/projects/' + projectId + '/sprints');
   };
-}]);
+}])
+.name;

@@ -1,5 +1,5 @@
-export const servicesBreadcrumbsModule = angular.module('services.breadcrumbs', []);
-servicesBreadcrumbsModule.factory('breadcrumbs', ['$rootScope', '$location', function($rootScope, $location){
+export const servicesBreadcrumbsModule = angular.module('services.breadcrumbs', [])
+.factory('breadcrumbs', ['$rootScope', '$location', function($rootScope, $location){
 
   var breadcrumbs = [];
   var breadcrumbsService: any = {};
@@ -30,4 +30,5 @@ servicesBreadcrumbsModule.factory('breadcrumbs', ['$rootScope', '$location', fun
   };
 
   return breadcrumbsService;
-}]);
+}])
+.name;

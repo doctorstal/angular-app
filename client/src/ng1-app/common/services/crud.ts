@@ -1,9 +1,9 @@
 import { servicesCrudRouteModule } from './crudRoute';
 
 export const servicesCrudModule = angular.module('services.crud', [
-  servicesCrudRouteModule.name
-]);
-servicesCrudModule.factory('crudEditMethods', [function () {
+  servicesCrudRouteModule
+])
+.factory('crudEditMethods', [function () {
 
   return function (itemName, item, formName, successcb, errorcb) {
 
@@ -65,9 +65,8 @@ servicesCrudModule.factory('crudEditMethods', [function () {
 
     return mixin;
   };
-}]);
-
-servicesCrudModule.factory('crudListMethods', ['$location', function ($location) {
+}])
+.factory('crudListMethods', ['$location', function ($location) {
 
   return function (pathPrefix) {
 
@@ -83,4 +82,5 @@ servicesCrudModule.factory('crudListMethods', ['$location', function ($location)
 
     return mixin;
   };
-}]);
+}])
+.name;

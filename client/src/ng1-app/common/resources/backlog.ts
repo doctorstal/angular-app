@@ -9,4 +9,5 @@ export const resourcesProductBaclogModule = angular.module('resources.productbac
   };
 
   return ProductBacklog;
-}]);
+}])
+.name;

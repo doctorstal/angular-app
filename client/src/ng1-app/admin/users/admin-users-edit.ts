@@ -3,10 +3,10 @@ import { adminUsersEditValidateEqualsModule } from './validateEquals';
 import { servicesCrudModule } from './../../common/services/crud';
 import { adminUsersEditUniqueEmailModule } from './uniqueEmail';
 export const adminUsersEditModule = angular.module('admin-users-edit',[
-  servicesCrudModule.name,
-  servicesI18nNotificationsModule.name,
-  adminUsersEditUniqueEmailModule.name,
-  adminUsersEditValidateEqualsModule.name
+  servicesCrudModule,
+  servicesI18nNotificationsModule,
+  adminUsersEditUniqueEmailModule,
+  adminUsersEditValidateEqualsModule
 ])
 
 .controller('UsersEditCtrl', ['$scope', '$location', 'i18nNotifications', 'user', function ($scope, $location, i18nNotifications, user) {
@@ -28,4 +28,5 @@ export const adminUsersEditModule = angular.module('admin-users-edit',[
     $location.path('/admin/users');
   };
 
-}]);
+}])
+.name;

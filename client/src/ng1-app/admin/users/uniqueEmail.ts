@@ -2,7 +2,7 @@ import { IController } from 'angular';
 import { resourcesUsersModule } from './../../common/resources/users';
 
 export const adminUsersEditUniqueEmailModule = angular.module('admin-users-edit-uniqueEmail', [
-  resourcesUsersModule.name
+  resourcesUsersModule
 ])
 
 /**
@@ -33,4 +33,5 @@ export const adminUsersEditUniqueEmailModule = angular.module('admin-users-edit-
       });
     }
   };
-}]);
+}])
+.name;

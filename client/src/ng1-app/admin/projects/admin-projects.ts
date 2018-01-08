@@ -4,10 +4,10 @@ import { resourcesUsersModule } from './../../common/resources/users';
 import { resourcesProjectsModule } from './../../common/resources/projects';
 
 export const adminProjectsModule = angular.module('admin-projects', [
-  resourcesProjectsModule.name,
-  resourcesUsersModule.name,
-  servicesCrudModule.name,
-  securityAuthorizationModule.name
+  resourcesProjectsModule,
+  resourcesUsersModule,
+  servicesCrudModule,
+  securityAuthorizationModule
 ])
 .config(['crudRouteProvider', 'securityAuthorizationProvider', function (crudRouteProvider, securityAuthorizationProvider) {
 
@@ -100,4 +100,5 @@ export const adminProjectsModule = angular.module('admin-projects', [
       $scope.selTeamMember = undefined;
     }
   };
-}]);
+}])
+.name;

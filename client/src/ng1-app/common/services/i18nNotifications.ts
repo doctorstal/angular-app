@@ -2,8 +2,8 @@ import { servicesNotificationsModule } from './notifications';
 import { servicesLocalizedMessagesModule } from './localizedMessages';
 
 export const servicesI18nNotificationsModule = angular.module('services.i18nNotifications', [
-  servicesNotificationsModule.name,
-  servicesLocalizedMessagesModule.name
+  servicesNotificationsModule,
+  servicesLocalizedMessagesModule
 ])
   .factory('i18nNotifications', ['localizedMessages', 'notifications', function (localizedMessages, notifications) {
 
@@ -33,4 +33,5 @@ export const servicesI18nNotificationsModule = angular.module('services.i18nNoti
     };
 
     return I18nNotifications;
-  }]);
+  }])
+  .name;

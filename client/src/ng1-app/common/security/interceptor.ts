@@ -1,6 +1,6 @@
 import { securityRetryQueueModule } from './retryQueue';
 export const securityInterceptorModule = angular.module('security.interceptor', [
-  securityRetryQueueModule.name
+  securityRetryQueueModule
 ])
 
 // This http interceptor listens for authentication failures
@@ -22,4 +22,5 @@ export const securityInterceptorModule = angular.module('security.interceptor', 
 // We have to add the interceptor to the queue as a string because the interceptor depends upon service instances that are not available in the config block.
 .config(['$httpProvider', function($httpProvider: angular.IHttpProvider) {
   $httpProvider.interceptors.push('securityInterceptor');
-}]);
+}])
+.name;

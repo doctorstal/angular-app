@@ -4,9 +4,9 @@ import { productBacklogModule } from './productbacklog/productbacklog';
 
 export const projectsModule = angular.module('projects', [
   'resources.projects', 
-  productBacklogModule.name, 
-  sprintsModule.name, 
-  securityAuthorizationModule.name])
+  productBacklogModule, 
+  sprintsModule, 
+  securityAuthorizationModule])
 
 .config(['$routeProvider', 'securityAuthorizationProvider', function ($routeProvider, securityAuthorizationProvider) {
   let conf: any = {
@@ -43,4 +43,5 @@ export const projectsModule = angular.module('projects', [
       return project.getRoles(security.currentUser.id);
     }
   };
-}]);
+}])
+.name;

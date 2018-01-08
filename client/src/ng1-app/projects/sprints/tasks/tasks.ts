@@ -1,8 +1,8 @@
 import { servicesCrudModule } from './../../../common/services/crud';
 import { resourcesTasksModule } from './../../../common/resources/tasks';
 export const tasksModule = angular.module('tasks', [
-  resourcesTasksModule.name, 
-  servicesCrudModule.name
+  resourcesTasksModule, 
+  servicesCrudModule
 ])
 
 .config(['crudRouteProvider', function (crudRouteProvider) {
@@ -70,4 +70,5 @@ export const tasksModule = angular.module('tasks', [
   $scope.onError = function() {
     $scope.updateError = true;
   };
-}]);
+}])
+.name;

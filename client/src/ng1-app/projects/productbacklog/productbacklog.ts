@@ -2,8 +2,8 @@ import { servicesCrudModule } from './../../common/services/crud';
 import { resourcesProductBaclogModule } from './../../common/resources/backlog';
 
 export const productBacklogModule = angular.module('productbacklog', [
-  resourcesProductBaclogModule.name, 
-  servicesCrudModule.name
+  resourcesProductBaclogModule, 
+  servicesCrudModule
 ])
 
   .config(['crudRouteProvider', function(crudRouteProvider){
@@ -71,4 +71,5 @@ export const productBacklogModule = angular.module('productbacklog', [
       $scope.updateError = true;
     };
   
-  }]);
+  }])
+  .name;

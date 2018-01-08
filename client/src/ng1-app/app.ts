@@ -15,16 +15,16 @@ import notifications_component_html from './notifications.component.html';
 
 export const appModule = angular.module('app', [
   'ngRoute',
-  projectsInfoModule.name,
-  dashboardModule.name,
-  projectsModule.name,
-  adminModule.name,
-  servicesBreadcrumbsModule.name,
-  servicesI18nNotificationsModule.name,
-  servicesExceptionHandlerModule.name, // Somehow it was not in dependencies in original sources
-  servicesHttpRequestTracker.name,
-  securityModule.name,
-  directivesCrudModule.name,
+  projectsInfoModule,
+  dashboardModule,
+  projectsModule,
+  adminModule,
+  servicesBreadcrumbsModule,
+  servicesI18nNotificationsModule,
+  servicesExceptionHandlerModule, // Somehow it was not in dependencies in original sources
+  servicesHttpRequestTracker,
+  securityModule,
+  directivesCrudModule,
   'templates.app',
   'templates.common']);
 

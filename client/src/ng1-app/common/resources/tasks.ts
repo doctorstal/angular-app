@@ -24,4 +24,5 @@ export const resourcesTasksModule = angular.module('resources.tasks', [
   };
 
   return Tasks;
-}]);
+}])
+.name;

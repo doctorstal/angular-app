@@ -7,4 +7,5 @@ export const resourcesUsersModule = angular.module('resources.users', ['mongolab
   };
 
   return userResource;
-}]);
+}])
+.name;

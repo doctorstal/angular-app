@@ -8,4 +8,5 @@ export const resourcesSprintsModule = angular.module('resources.sprints', [
     return Sprints.query({projectId:projectId});
   };
   return Sprints;
-}]);
+}])
+.name;

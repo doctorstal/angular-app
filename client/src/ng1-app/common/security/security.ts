@@ -2,8 +2,8 @@ import { securityLoginModule } from './login/login';
 import { securityRetryQueueModule } from './retryQueue';
 // Based loosely around work by Witold Szczerba - https://github.com/witoldsz/angular-http-auth
 export const securityServiceModule = angular.module('security.service', [
-  securityRetryQueueModule.name,    // Keeps track of failed requests that need to be retried once the user logs in
-  securityLoginModule.name,         // Contains the login form template and controller
+  securityRetryQueueModule,    // Keeps track of failed requests that need to be retried once the user logs in
+  securityLoginModule,         // Contains the login form template and controller
   'ui.bootstrap.dialog'     // Used to display the login form as a modal dialog.
 ])
 
@@ -111,4 +111,5 @@ export const securityServiceModule = angular.module('security.service', [
   };
 
   return service;
-}]);
+}])
+.name;

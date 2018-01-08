@@ -5,11 +5,11 @@ import { securityAuthorizationModule } from './../../common/security/authorizati
 import { servicesCrudModule } from './../../common/services/crud';
 
 export const adminUsersModule = angular.module('admin-users', [
-  adminUsersListModule.name,
-  adminUsersEditModule.name,
-  servicesCrudModule.name,
-  securityAuthorizationModule.name,
-  directivesGravatarModule.name
+  adminUsersListModule,
+  adminUsersEditModule,
+  servicesCrudModule,
+  securityAuthorizationModule,
+  directivesGravatarModule
 ])
 
 .config(['crudRouteProvider', 'securityAuthorizationProvider', function (crudRouteProvider, securityAuthorizationProvider) {
@@ -29,4 +29,5 @@ export const adminUsersModule = angular.module('admin-users', [
       }],
       currentUser: securityAuthorizationProvider.requireAdminUser
     });
-}]);
+}])
+.name;

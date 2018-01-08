@@ -9,8 +9,8 @@ export const projectsInfoModule = angular.module('projectsinfo', [], ['$routePro
       }]
     }
   });
-}]);
-
-projectsInfoModule.controller('ProjectsInfoListCtrl', ['$scope', 'projects', function($scope, projects){
+}])
+.controller('ProjectsInfoListCtrl', ['$scope', 'projects', function($scope, projects){
   $scope.projects = projects;
-}]);
+}])
+.name;

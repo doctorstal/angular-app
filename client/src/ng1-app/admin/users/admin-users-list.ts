@@ -1,6 +1,8 @@
+import { servicesI18nNotificationsModule } from './../../common/services/i18nNotifications';
+import { servicesCrudModule } from './../../common/services/crud';
 export const adminUsersListModule = angular.module('admin-users-list', [
-  'services.crud',
-  'services.i18nNotifications'
+  servicesCrudModule,
+  servicesI18nNotificationsModule
 ])
 
 .controller('UsersListCtrl', ['$scope', 'crudListMethods', 'users', 'i18nNotifications', function ($scope, crudListMethods, users, i18nNotifications) {
@@ -22,4 +24,5 @@ export const adminUsersListModule = angular.module('admin-users-list', [
       i18nNotifications.pushForCurrentRoute('crud.user.remove.error', 'error', {id : user.$id()});
     });
   };
-}]);
+}])
+.name;

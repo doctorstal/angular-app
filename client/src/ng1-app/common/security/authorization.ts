@@ -43,4 +43,5 @@ export const securityAuthorizationModule = angular.module('security.authorizatio
     return service;
   }]
   return this;
-});
+})
+.name;
