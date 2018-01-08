@@ -22,7 +22,7 @@ platformBrowserDynamic().bootstrapModule(AppModule)
     const upgrade: UpgradeModule = moduleRef.injector.get(UpgradeModule);
     setAngularLib(angular);
 
-    upgrade.bootstrap(document.body, [ng1App.name]);
+    upgrade.bootstrap(document.body, [ng1App]);
 
     // Next thing we need to do - init ng2+ Router navigation.
     // We need to do it in NgZone::run, so routerLinks will work smoothly.
