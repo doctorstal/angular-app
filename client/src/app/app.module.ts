@@ -1,3 +1,4 @@
+import { I18nNotificationModule } from './i18nNotifications/i18nNotifications.module';
 import { 
   Router, 
   RouterModule,
@@ -25,7 +26,8 @@ export class Ng1Ng2UrlHandlingStrategy extends UrlHandlingStrategy {
   imports: [
     BrowserModule,
     UpgradeModule,
-    RouterModule.forRoot([])
+    RouterModule.forRoot([]),
+    I18nNotificationModule
   ],
   providers: [
     {provide: UrlHandlingStrategy, useClass: Ng1Ng2UrlHandlingStrategy}
