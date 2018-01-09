@@ -1,3 +1,4 @@
+// TODO find a way to inject downgraded services in test
 describe('i18nNotifications', function () {
 
   var i18nNotifications, notifications, localizedMessages;

@@ -1,10 +1,39 @@
-describe('notifications', function () {
+import { rootScopeProvider } from './../../../upgrade';
+import { TestBed, inject } from '@angular/core/testing';
 
-  var $scope, notifications;
-  beforeEach(module('services.notifications'));
-  beforeEach(inject(function($injector) {
-    $scope = $injector.get('$rootScope');
-    notifications = $injector.get('notifications');
+import { NotificationsService } from './notifications.service';
+
+describe('NotificationsService', () => {
+  let handlers: any = {};
+  let $scope = {
+    $on: (eventName, handler: Function) => {
+      handlers[eventName] = (handlers[eventName] || []).concat(handler);
+      
+    },
+    $emit: (eventName) => handlers[eventName] && handlers[eventName].forEach(handler=>handler.apply())
+  };
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [
+        NotificationsService, 
+        {
+          provide: '$rootScope',
+          useValue: $scope
+        }
+      ]
+    });
+  });
+
+  let notifications;
+  
+
+  beforeEach(inject([NotificationsService], (service: NotificationsService)=>{
+    notifications = service;
+  }));
+
+  it('should be created', inject([NotificationsService], (service: NotificationsService) => {
+    expect(service).toBeTruthy();
   }));
 
   describe('global notifications crud', function () {

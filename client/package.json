@@ -15,7 +15,7 @@
     "e2e": "ng e2e",
     "prebuild": "grunt prebuild",
     "build": "ng build",
-    "postbuild": "grunt postbuild"
+    "postbuild": "grunt postbuild && ng test"
   },
   "bugs": {
     "url": "https://github.com/angular-app/angular-app/issues"
