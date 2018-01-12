@@ -1,7 +1,9 @@
+import { servicesHttpRequestTracker } from "./httpRequestTracker";
+
 describe('httpRequestTracker', function () {
 
   var http, httpRequestTracker;
-  beforeEach(module('services.httpRequestTracker'));
+  beforeEach(angular.mock.module(servicesHttpRequestTracker));
   beforeEach(inject(function ($injector) {
     httpRequestTracker = $injector.get('httpRequestTracker');
     http = $injector.get('$http');

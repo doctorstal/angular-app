@@ -1,3 +1,5 @@
+import { adminUsersEditValidateEqualsModule } from "./validateEquals";
+
 describe('validateEquals directive', function() {
   var $scope, form;
 
@@ -10,7 +12,7 @@ describe('validateEquals directive', function() {
     $scope.$digest();
   }
 
-  beforeEach(module('admin-users-edit-validateEquals'));
+  beforeEach(angular.mock.module(adminUsersEditValidateEqualsModule));
 
   beforeEach(inject(function($compile, $rootScope) {
     $scope = $rootScope;

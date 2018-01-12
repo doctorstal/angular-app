@@ -1,9 +1,10 @@
+import { adminUsersListModule } from './admin-users-list';
 describe('admin-users-list', function() {
 
   beforeEach(function() {
     angular.module('I18N-mock', []).value('I18N.MESSAGES', {});
   });
-  beforeEach(module('admin-users-list', 'I18N-mock'));
+  beforeEach(angular.mock.module(adminUsersListModule, 'I18N-mock'));
 
   describe('UsersListCtrl', function () {
 

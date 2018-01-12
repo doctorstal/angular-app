@@ -1,9 +1,10 @@
+import { adminUsersEditModule } from './admin-users-edit';
 describe('admin-users-edit', function() {
 
   beforeEach(function() {
     angular.module('I18N-mock', []).value('I18N.MESSAGES', {});
   });
-  beforeEach(module('admin-users-edit', 'I18N-mock'));
+  beforeEach(angular.mock.module(adminUsersEditModule, 'I18N-mock'));
 
   describe('UsersEditCtrl', function () {
     function createLocals() {

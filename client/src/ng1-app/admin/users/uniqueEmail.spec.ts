@@ -1,3 +1,5 @@
+import { adminUsersEditUniqueEmailModule } from "./uniqueEmail";
+
 describe('uniqueEmail directive', function() {
   var Users, $scope, form;
 
@@ -14,7 +16,7 @@ describe('uniqueEmail directive', function() {
     });
   });
   
-  beforeEach(module('admin-users-edit-uniqueEmail', 'mock-Users'));
+  beforeEach(angular.mock.module(adminUsersEditUniqueEmailModule, 'mock-Users'));
 
   beforeEach(inject(function($compile, $rootScope){
     $scope = $rootScope;

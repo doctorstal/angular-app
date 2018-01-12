@@ -1,11 +1,14 @@
-// TODO find a way to inject downgraded services in test
+import { servicesI18nNotificationsModule } from './i18nNotifications';
+
 describe('i18nNotifications', function () {
 
   var i18nNotifications, notifications, localizedMessages;
   beforeEach(function () {
-    angular.module('test', ['services.i18nNotifications']).value('I18N.MESSAGES', {});
+    angular.module('test', [servicesI18nNotificationsModule]).value('I18N.MESSAGES', {});
   });
-  beforeEach(module('test'));
+  beforeEach(function() {
+    angular.mock.module('test');
+  });
   beforeEach(inject(function (_i18nNotifications_, _notifications_, _localizedMessages_) {
     i18nNotifications = _i18nNotifications_;
     notifications = _notifications_;
@@ -15,13 +18,9 @@ describe('i18nNotifications', function () {
   describe('creating new notification based on localized messages', function () {
 
     it('should add a new sticky notification based on a localized message and its type', function () {
-      var notifications;
+      spyOn(notifications, 'pushSticky');
       i18nNotifications.pushSticky('i18n.key', 'success');
-
-      notifications = i18nNotifications.getCurrent();
-      expect(notifications.length).toEqual(1);
-      expect(notifications[0].message).toEqual('?i18n.key?');
-      expect(notifications[0].type).toEqual('success');
+      expect(notifications.pushSticky).toHaveBeenCalledWith({message: '?i18n.key?', type: 'success'})
     });
   });
 

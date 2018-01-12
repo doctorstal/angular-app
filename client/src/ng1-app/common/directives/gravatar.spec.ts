@@ -1,6 +1,7 @@
+import { directivesGravatarModule } from './gravatar';
 describe('directives.gravatar', function () {
   var element, scope;
-  beforeEach(module('directives.gravatar'));
+  beforeEach(angular.mock.module(directivesGravatarModule));
   beforeEach(inject(function($compile, $rootScope) {
     scope = $rootScope;
     scope.email = "pete@bacondarwin.com";

@@ -2994,12 +2994,12 @@ function annotate(fn) {
  *  describe('eventTracker', function() {
  *    var postSpy;
  *
- *    beforeEach(module(function($provide) {
+ *    beforeEach(angular.mock.module(function($provide) {
  *      // Register the eventTracker provider
  *      $provide.provider('eventTracker', EventTrackerProvider);
  *    }));
  *
- *    beforeEach(module(function(eventTrackerProvider) {
+ *    beforeEach(angular.mock.module(function(eventTrackerProvider) {
  *      // Configure eventTracker provider
  *      eventTrackerProvider.setTrackingUrl('/custom-track');
  *    }));

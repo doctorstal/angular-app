@@ -1,7 +1,8 @@
+import { directivesCrudEditModule } from './edit';
 describe('crud-edit directive', function () {
   var resourceMock;
 
-  beforeEach(module('directives.crud.edit'));
+  beforeEach(angular.mock.module(directivesCrudEditModule));
   beforeEach(function() {
     resourceMock = jasmine.createSpyObj('resource', ['$saveOrUpdate', '$remove', '$id']);
     inject(function($rootScope) {

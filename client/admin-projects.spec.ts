@@ -1,6 +1,8 @@
+import { adminProjectsModule } from "./src/ng1-app/admin/projects/admin-projects";
+
 describe('admin projects', function () {
 
-  beforeEach(module('admin-projects'));
+  beforeEach(angular.mock.module(adminProjectsModule));
 
   describe('ProjectsListCtrl', function () {
     it('should call crudListMethods', inject(function($controller, $rootScope) {

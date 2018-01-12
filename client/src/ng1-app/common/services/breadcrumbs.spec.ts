@@ -1,7 +1,7 @@
+import { servicesBreadcrumbsModule } from './breadcrumbs';
 describe('breadcrumbs', function () {
 
-  var LocationMock = function (initialPath) {
-    var pathStr = initialPath || '';
+  var LocationMock = function (pathStr = ''): void {
     this.path = function (pathArg) {
       return pathArg ? pathStr = pathArg : pathStr;
     };
@@ -9,7 +9,7 @@ describe('breadcrumbs', function () {
 
   var $location, $rootScope, breadcrumbs;
 
-  beforeEach(module('services.breadcrumbs'));
+  beforeEach(angular.mock.module(servicesBreadcrumbsModule));
   beforeEach(inject(function($injector) {
     breadcrumbs = $injector.get('breadcrumbs');
     $rootScope = $injector.get('$rootScope');

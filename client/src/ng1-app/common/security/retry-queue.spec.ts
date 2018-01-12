@@ -1,3 +1,4 @@
+import { securityRetryQueueModule } from './retryQueue';
 describe('securityRetryQueue', function() {
   var queue;
 
@@ -5,7 +6,7 @@ describe('securityRetryQueue', function() {
     return jasmine.createSpyObj('retryItem', ['retry', 'cancel']);
   }
 
-  beforeEach(module('security.retryQueue'));
+  beforeEach(angular.mock.module(securityRetryQueueModule));
 
   beforeEach(inject(function($injector) {
     queue = $injector.get('securityRetryQueue');

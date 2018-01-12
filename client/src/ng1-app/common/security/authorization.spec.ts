@@ -1,9 +1,12 @@
+import { securityAuthorizationModule } from './authorization';
+import '../../../../src_gen/angular-app';
+
 describe('securityAuthorization', function() {
   var $rootScope, security, securityAuthorization, queue;
   var userResponse, resolved;
 
   angular.module('test', []).value('I18N.MESSAGES', {});
-  beforeEach(module('test', 'security.authorization', 'security/login/form.tpl.html'));
+  beforeEach(angular.mock.module('test', securityAuthorizationModule, 'security/login/form.tpl.html'));
   beforeEach(inject(function($injector) {
     $rootScope = $injector.get('$rootScope');
     securityAuthorization = $injector.get('securityAuthorization');

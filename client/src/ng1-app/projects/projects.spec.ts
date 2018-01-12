@@ -1,6 +1,8 @@
+import { projectsModule } from "./projects";
+
 describe('ProjectsViewCtrl', function() {
 
-  beforeEach(module('projects'));
+  beforeEach(angular.mock.module(projectsModule));
 
   function runController($scope, projects) {
     inject(function($controller) {
@@ -20,7 +22,7 @@ describe('ProjectsViewCtrl', function() {
   }
 
   it("attaches the list of projects to the scope", function() {
-    var $scope = {},
+    var $scope: any = {},
         projects = createMockProjectList();
 
     runController($scope, projects);
@@ -28,7 +30,7 @@ describe('ProjectsViewCtrl', function() {
   });
 
   describe('viewProject(projectId)', function() {
-    var $scope = {},
+    var $scope: any = {},
         projects = createMockProjectList();
 
     it('changes the location', inject(function($location) {
@@ -42,7 +44,7 @@ describe('ProjectsViewCtrl', function() {
   });
 
   describe('manageBacklog(projectId)', function() {
-    var $scope = {},
+    var $scope: any = {},
         projects = createMockProjectList();
 
     it('changes the location', inject(function($location) {
@@ -56,7 +58,7 @@ describe('ProjectsViewCtrl', function() {
   });
 
   describe('manageSprints(projectId)', function() {
-    var $scope = {},
+    var $scope: any = {},
         projects = createMockProjectList();
 
     it('changes the location', inject(function($location) {
@@ -70,7 +72,7 @@ describe('ProjectsViewCtrl', function() {
   });
 
   describe('getMyRoles(project)', function() {
-    var $scope = {},
+    var $scope: any = {},
         projects = createMockProjectList();
 
     it('calls getRoles on the project with the current user', inject(function(security) {

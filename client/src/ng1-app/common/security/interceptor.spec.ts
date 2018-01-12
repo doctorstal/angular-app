@@ -1,7 +1,8 @@
+import { securityInterceptorModule } from './interceptor';
 describe('securityInterceptor', function() {
   var queue, interceptor, responseError, wrappedPromise;
 
-  beforeEach(module('security.interceptor'));
+  beforeEach(angular.mock.module(securityInterceptorModule));
 
   beforeEach(inject(function($injector) {
     queue = $injector.get('securityRetryQueue');

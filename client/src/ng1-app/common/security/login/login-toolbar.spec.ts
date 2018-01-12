@@ -1,6 +1,9 @@
+import { securityModule } from './../index';
+import '../../../../../src_gen/angular-app';
+
 describe('login-toolbar', function() {
   var $rootScope, scope, toolbar, security;
-  beforeEach(module('security/login/toolbar.tpl.html', 'security'));
+  beforeEach(angular.mock.module('security/login/toolbar.tpl.html', securityModule));
   beforeEach(inject(function(_$rootScope_, $compile, _security_) {
     $rootScope = _$rootScope_;
     security = _security_;

@@ -1,3 +1,4 @@
+import { servicesCrudModule } from './crud';
 describe('CRUD scope mix-ins', function () {
 
   var $rootScope;
@@ -5,7 +6,7 @@ describe('CRUD scope mix-ins', function () {
   describe('crud edit methods', function () {
 
     var crudEditMethods;
-    beforeEach(module('services.crud'));
+    beforeEach(angular.mock.module(servicesCrudModule));
     beforeEach(inject(function (_$rootScope_, _crudEditMethods_) {
       $rootScope = _$rootScope_;
       crudEditMethods = _crudEditMethods_;
@@ -22,8 +23,8 @@ describe('CRUD scope mix-ins', function () {
     describe('scope manipulation', function () {
 
       var item, scope;
-      var successcb = jasmine.createSpy();
-      var errorcb = jasmine.createSpy();
+      var successcb = jasmine.createSpy('successcb');
+      var errorcb = jasmine.createSpy('errorcb');
 
       beforeEach(inject(function ($rootScope) {
         item = {key:'value'};
@@ -132,7 +133,7 @@ describe('CRUD scope mix-ins', function () {
           expect(scope.canSave()).toBeTruthy();
         });
         it('should invoke the $saveOrUpdate method on an item with callback arguments on save', function () {
-          item.$saveOrUpdate = jasmine.createSpy();
+          item.$saveOrUpdate = jasmine.createSpy('$saveOrUpdate');
           scope.save();
           expect(item.$saveOrUpdate).toHaveBeenCalledWith(successcb, successcb, errorcb, errorcb);
         });
@@ -164,7 +165,7 @@ describe('CRUD scope mix-ins', function () {
           item.$id = function () {
             return 'id';
           };
-          item.$remove = jasmine.createSpy();
+          item.$remove = jasmine.createSpy('$remove');
           scope.remove();
           expect(item.$remove).toHaveBeenCalledWith(successcb, errorcb);
         });
@@ -184,9 +185,9 @@ describe('CRUD scope mix-ins', function () {
     var $location, crudListMethods;
 
     beforeEach(function () {
-      angular.module('test', ['services.crud']).value('$location', $location = new LocationMock());
+      angular.module('test', [servicesCrudModule]).value('$location', $location = new LocationMock());
     });
-    beforeEach(module('test'));
+    beforeEach(angular.mock.module('test'));
     beforeEach(inject(function (_$rootScope_, _crudListMethods_) {
       $rootScope = _$rootScope_;
       crudListMethods = _crudListMethods_;
