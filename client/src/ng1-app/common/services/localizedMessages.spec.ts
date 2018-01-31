@@ -3,7 +3,7 @@ describe('localized messages', function () {
   var localizedMessages, messages;
   beforeEach(function () {
     angular.module('test', ['services.localizedMessages']).value('I18N.MESSAGES', messages = {});
-    module('test');
+    angular.mock.module('test');
   });
   beforeEach(inject(function (_localizedMessages_) {
     localizedMessages = _localizedMessages_;

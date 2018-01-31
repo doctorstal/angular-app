@@ -21,7 +21,7 @@ describe('admin projects', function () {
 
     function createLocals() {
       return {
-        $scope: {},
+        $scope: <any>{},
         $location: jasmine.createSpyObj('$location', ['path']),
         i18nNotifications: jasmine.createSpyObj('i18nNotifications', ['pushForCurrentRoute', 'pushForNextRoute']),
         users: [ { $id: function() { return 'X'; }, filter: jasmine.createSpy('filter') } ],

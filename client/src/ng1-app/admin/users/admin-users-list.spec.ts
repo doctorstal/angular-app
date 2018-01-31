@@ -10,7 +10,7 @@ describe('admin-users-list', function() {
 
     it('should set up the scope correctly', inject(function($controller) {
       var locals = {
-        $scope: {},
+        $scope: <any>{},
         crudListMethods: jasmine.createSpy('crudListMethods'),
         users: {}
       };

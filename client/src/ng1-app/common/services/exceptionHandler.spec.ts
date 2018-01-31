@@ -5,7 +5,7 @@ describe('exception handler', function () {
     angular.module('test', ['services.exceptionHandler'], function($exceptionHandlerProvider){
       $exceptionHandlerProvider.mode('log');
     }).constant('I18N.MESSAGES', {'error.fatal':'Oh, snap!'});
-    module('test');
+    angular.mock.module('test');
   });
   beforeEach(inject(function (_$exceptionHandler_, _notifications_) {
     $exceptionHandler = _$exceptionHandler_;

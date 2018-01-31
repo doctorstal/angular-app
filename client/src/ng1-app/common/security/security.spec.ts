@@ -142,6 +142,7 @@ describe('security', function() {
   });
 
   describe('requestCurrentUser', function() {
+    let resolved: boolean;
     it('makes a GET request to current-user url', function() {
       expect(service.isAuthenticated()).toBe(false);
       $httpBackend.expect('GET', '/current-user');

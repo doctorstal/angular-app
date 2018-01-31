@@ -2,6 +2,9 @@
 
 import 'angular';
 import 'angular-mocks/ngMock';
+import 'angular-route';
+import '../vendor/mongolab/mongolab-resource.js';
+import '../vendor/angular-ui/bootstrap/ui-bootstrap-custom-0.1.0-SNAPSHOT.js';
 import 'zone.js/dist/long-stack-trace-zone';
 import 'zone.js/dist/proxy.js';
 import 'zone.js/dist/sync-test';
@@ -14,7 +17,7 @@ import {
   platformBrowserDynamicTesting
 } from '@angular/platform-browser-dynamic/testing';
 
-import 'downgrade.test';
+import './downgrade.test';
 
 // Unfortunately there's no typing for the `__karma__` variable. Just declare it as any.
 declare const __karma__: any;

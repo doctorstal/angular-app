@@ -9,7 +9,7 @@ describe('admin-users-edit', function() {
   describe('UsersEditCtrl', function () {
     function createLocals() {
       return {
-        $scope: {},
+        $scope: <any>{},
         $location: jasmine.createSpyObj('$location', ['path']),
         i18nNotifications: jasmine.createSpyObj('i18nNotifications', ['pushForCurrentRoute', 'pushForNextRoute']),
         user: {
