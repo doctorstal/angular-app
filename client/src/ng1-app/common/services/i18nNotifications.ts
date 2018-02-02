@@ -16,7 +16,6 @@ export const servicesI18nNotificationsModule = angular.module('services.i18nNoti
 
     var I18nNotifications = {
       pushSticky: function (msgKey, type, interpolateParams, otherProperties) {
-        console.log(notifications)
         return notifications.pushSticky(prepareNotification(msgKey, type, interpolateParams, otherProperties));
       },
       pushForCurrentRoute: function (msgKey, type, interpolateParams, otherProperties) {

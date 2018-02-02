@@ -8,4 +8,5 @@ angular.module(servicesNotificationsModule)
         getCurrent(){},
         pushSticky(){},
         remove(){},
+        pushForCurrentRoute(){}
     }));

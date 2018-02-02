@@ -1,8 +1,10 @@
+import {servicesExceptionHandlerModule} from "./exceptionHandler";
+
 describe('exception handler', function () {
 
   var $exceptionHandler, notifications;
   beforeEach(function () {
-    angular.module('test', ['services.exceptionHandler'], function($exceptionHandlerProvider){
+    angular.module('test', [servicesExceptionHandlerModule], function($exceptionHandlerProvider){
       $exceptionHandlerProvider.mode('log');
     }).constant('I18N.MESSAGES', {'error.fatal':'Oh, snap!'});
     angular.mock.module('test');
@@ -17,15 +19,15 @@ describe('exception handler', function () {
     var error = new Error('Something went wrong...');
     var cause = 'Some obscure problem...';
 
-    $exceptionHandler(error, cause);
-    var currentNotifications = notifications.getCurrent(), errorNotification;
-    expect(currentNotifications.length).toEqual(1);
+    spyOn(notifications, 'pushForCurrentRoute');
 
-    errorNotification = currentNotifications[0];
-    expect(errorNotification.type).toEqual("error");
-    expect(errorNotification.message).toEqual("Oh, snap!");
-    expect(errorNotification.exception).toEqual(error);
-    expect(errorNotification.cause).toEqual(cause);
+    $exceptionHandler(error, cause);
+    expect(notifications.pushForCurrentRoute).toHaveBeenCalledWith({
+        type: 'error',
+        message: 'Oh, snap!',
+        exception: error,
+        cause: cause
+    });
   });
 
   it('should not go into infinite loop in case of problems with exception handler', function () {
