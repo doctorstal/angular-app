@@ -69,6 +69,7 @@
     "grunt-html2js": "~0.1.0",
     "grunt-karma": "^2.0.0",
     "grunt-recess": "~0.3",
+    "intl": "^1.2.5",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",
     "karma": "~1.7.0",
